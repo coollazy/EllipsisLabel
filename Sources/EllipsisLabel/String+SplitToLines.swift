@@ -5,10 +5,6 @@ extension String {
         size(withAttributes: [NSAttributedString.Key.font: font])
     }
     
-    func numberOfLines(withFont font: UIFont, maximumWidth: Float) -> Int {
-        max(Int(ceil(size(withFont: font).width / CGFloat(maximumWidth))), 1)
-    }
-    
     func splitToLines(withFont: UIFont, maximumWidth: Float) -> [String] {
         split(separator: "\n", omittingEmptySubsequences: false)
             .map({ String($0) })

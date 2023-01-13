@@ -52,11 +52,10 @@ public class EllipsisLabel: UILabel {
             .split(separator: "\n", omittingEmptySubsequences: false)
             .map({ String($0) })
         
-        let textNumberOfLines = texts
-            .map({ $0.numberOfLines(withFont: font, maximumWidth: maxWidth) })
-            .reduce(0, { $0 + $1 })
+        let textLines = text
+            .splitToLines(withFont: font, maximumWidth: maxWidth)
         
-        return numberOfLines < textNumberOfLines
+        return numberOfLines < textLines.count
     }
     
     private func setEllipsis(_ ellipsis: String, maximumWidth: Float? = nil) {
@@ -69,6 +68,7 @@ public class EllipsisLabel: UILabel {
             return
         }
         guard isNeedTruncate(maximumWidth: maximumWidth) else {
+            super.text = labelText
             return
         }
         
