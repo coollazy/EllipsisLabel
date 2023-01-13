@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mBS-sK-xMk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -8,7 +8,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="fb2-U7-LWi">
+            <objects>
+                <tabBarController id="mBS-sK-xMk" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J4l-OC-eQd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Rfu-iS-Ds0"/>
+                        <segue destination="mPV-Et-AN7" kind="relationship" relationship="viewControllers" id="7CJ-Ik-ICn"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HN8-UC-LFH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-822" y="201"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ExampleEllipsisLabel" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +37,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lF8-i0-aDG" customClass="EllipsisLabel" customModule="EllipsisLabel">
                                 <rect key="frame" x="57" y="94" width="300" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="bRY-T3-5Ve"/>
+                                    <constraint firstAttribute="width" constant="300" id="7un-Nr-CtM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -31,7 +49,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="GAk-Ud-nmw"/>
                                 </constraints>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -87,14 +105,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohE-oQ-DX5">
-                                <rect key="frame" x="180.5" y="475.5" width="53" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="更新"/>
-                                <connections>
-                                    <action selector="onButtonClickedHandler:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6pD-Xe-9n4"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1f-MZ-3YI">
                                 <rect key="frame" x="20" y="398" width="100" height="21"/>
                                 <constraints>
@@ -112,6 +122,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohE-oQ-DX5">
+                                <rect key="frame" x="331" y="275" width="53" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="更新"/>
+                                <connections>
+                                    <action selector="onButtonClickedHandler:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6pD-Xe-9n4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -123,9 +141,8 @@
                             <constraint firstItem="3Ea-jQ-QWk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Hx6-zG-pk4"/>
                             <constraint firstItem="JWW-7W-MeM" firstAttribute="centerY" secondItem="s1f-MZ-3YI" secondAttribute="centerY" id="Hzu-9m-Z0k"/>
                             <constraint firstItem="E5H-00-qV9" firstAttribute="top" secondItem="3Ea-jQ-QWk" secondAttribute="bottom" constant="20" id="ICZ-b2-NHt"/>
-                            <constraint firstItem="ohE-oQ-DX5" firstAttribute="top" secondItem="JWW-7W-MeM" secondAttribute="bottom" constant="50" id="Nfk-PU-0QI"/>
                             <constraint firstItem="jd3-kZ-E7w" firstAttribute="centerY" secondItem="3Ea-jQ-QWk" secondAttribute="centerY" id="Nlh-4z-bC4"/>
-                            <constraint firstItem="ohE-oQ-DX5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rid-My-KKP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ohE-oQ-DX5" secondAttribute="trailing" constant="30" id="Tra-Ku-HC3"/>
                             <constraint firstItem="s1f-MZ-3YI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ve0-pC-ZPy"/>
                             <constraint firstItem="3Ea-jQ-QWk" firstAttribute="top" secondItem="kui-5T-Z9U" secondAttribute="bottom" constant="20" id="WhD-Qt-KYc"/>
                             <constraint firstItem="lF8-i0-aDG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XdG-pa-8rv"/>
@@ -139,13 +156,15 @@
                             <constraint firstItem="E5H-00-qV9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kej-hP-6b7"/>
                             <constraint firstItem="s1f-MZ-3YI" firstAttribute="top" secondItem="E5H-00-qV9" secondAttribute="bottom" constant="20" id="lPx-DZ-tHO"/>
                             <constraint firstItem="72C-ZP-7is" firstAttribute="centerY" secondItem="kui-5T-Z9U" secondAttribute="centerY" id="omH-wk-gvy"/>
+                            <constraint firstItem="ohE-oQ-DX5" firstAttribute="top" secondItem="XzJ-FN-h73" secondAttribute="bottom" constant="30" id="tmU-RE-Oo6"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="uaA-38-Dmg"/>
                     <connections>
                         <outlet property="ellipsisTextField" destination="GnE-aG-7ow" id="Hgv-sQ-9O0"/>
                         <outlet property="fontSizeTextField" destination="jd3-kZ-E7w" id="1Ho-Hz-IC5"/>
                         <outlet property="label" destination="lF8-i0-aDG" id="my3-Is-Vx2"/>
-                        <outlet property="labelWidthContstraint" destination="bRY-T3-5Ve" id="4QE-Dw-F9v"/>
+                        <outlet property="labelWidthContstraint" destination="7un-Nr-CtM" id="X8k-7e-Xp8"/>
                         <outlet property="numberOfLineTextField" destination="JWW-7W-MeM" id="lZJ-EE-GsT"/>
                         <outlet property="textView" destination="XzJ-FN-h73" id="HV6-4J-azY"/>
                         <outlet property="widthTextField" destination="72C-ZP-7is" id="503-x6-PCL"/>
@@ -153,7 +172,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="98"/>
+            <point key="canvasLocation" x="-110" y="201"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Rrg-70-riX">
+            <objects>
+                <viewController id="mPV-Et-AN7" customClass="TableViewController" customModule="ExampleEllipsisLabel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xcx-Eb-H4B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sMW-tN-qln">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aJV-BM-w7p"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sMW-tN-qln" firstAttribute="leading" secondItem="aJV-BM-w7p" secondAttribute="leading" id="Dps-wG-aPo"/>
+                            <constraint firstItem="aJV-BM-w7p" firstAttribute="trailing" secondItem="sMW-tN-qln" secondAttribute="trailing" id="GPM-zm-FP1"/>
+                            <constraint firstItem="sMW-tN-qln" firstAttribute="top" secondItem="aJV-BM-w7p" secondAttribute="top" id="OgH-wq-X7o"/>
+                            <constraint firstItem="aJV-BM-w7p" firstAttribute="bottom" secondItem="sMW-tN-qln" secondAttribute="bottom" id="nxz-D5-oDf"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="KIY-eb-0rX"/>
+                    <connections>
+                        <outlet property="tableView" destination="sMW-tN-qln" id="4rl-po-v37"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dEp-yq-DyE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="626" y="201"/>
         </scene>
     </scenes>
     <resources>

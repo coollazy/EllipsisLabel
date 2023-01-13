@@ -3,7 +3,7 @@
 
 use_frameworks!
 
-inhibit_all_warnings!
+#inhibit_all_warnings!
 
 target 'ExampleEllipsisLabel' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks

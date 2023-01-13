@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let text1 = "cnddksskdcnckfkksmdncnckkcckndnfncckckkccmcncmmckckckfkdcmckckkckcncmdksldkckcmmcmcnvmcmckcmcmfmcmckckckmcmcmcmwwmxmckkvfmemfmkckvkfmdnfkkckvkfmdmfkvlvkvkcmdmvkvkkcmcmcmcmvmmcmckckdmdmmcvkkvkckckckcmc"
+        let text1 = "kakakamallalakalalallalakakakananbabababahabajhahahahahabahahhsbshahahahahhahagagq從那次噗噗噗噗噗噗我kakakamallalakalalallalakakakananbabababahabajhahahahahabahahhsbshahahahahhahagagqkakakamallalakalalallalaka"
         label.font = .systemFont(ofSize: 17)
         label.textColor = .darkGray
         label.numberOfLines = 5

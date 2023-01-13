@@ -12,7 +12,6 @@ public class EllipsisLabel: UILabel {
     public override var text: String? {
         didSet {
             originalText = text
-            layoutEllipsis()
         }
     }
     
@@ -21,21 +20,13 @@ public class EllipsisLabel: UILabel {
         layoutEllipsis()
     }
     
-    public override func updateConstraints() {
-        super.updateConstraints()
-        layoutEllipsis()
-    }
-    
     private func layoutEllipsis() {
-        if let ellipsis = ellipsis {
-            setEllipsis(ellipsis)
-        }
-        else if let ellipsis = attributedEllipsis?.string {
-            setEllipsis(ellipsis)
+        if ellipsis != nil || attributedEllipsis != nil {
+            drawEllipsis()
         }
     }
     
-    private func isNeedTruncate(maximumWidth: Float? = nil) -> Bool {
+    private func isNeedTruncate() -> Bool {
         guard numberOfLines > 1 else {
             return false
         }
@@ -46,79 +37,75 @@ public class EllipsisLabel: UILabel {
             return false
         }
         
-        let maxWidth = maximumWidth ?? Float(bounds.width)
+        let maxWidth = bounds.width
+        let maxHeight = font.lineHeight * CGFloat(numberOfLines)
         
-        let texts = text
-            .split(separator: "\n", omittingEmptySubsequences: false)
-            .map({ String($0) })
-        
-        let textLines = text
-            .splitToLines(withFont: font, maximumWidth: maxWidth)
-        
-        return numberOfLines < textLines.count
+        return text.isFitSize(.init(width: maxWidth, height: maxHeight), font: font) == false
     }
     
-    private func setEllipsis(_ ellipsis: String, maximumWidth: Float? = nil) {
-        guard let labelText = originalText else {
-            print("[ERROR] Set ellipsis without text")
-            return
-        }
+    private func drawEllipsis() {
         guard let font = font else {
             print("[ERROR] Set ellipsis without font")
             return
         }
-        guard isNeedTruncate(maximumWidth: maximumWidth) else {
-            super.text = labelText
+        guard isNeedTruncate() else {
+            super.text = originalText
             return
         }
         
-        let maxWidth = maximumWidth ?? Float(bounds.width)
+        let maxWidth = bounds.width
+        let maxHeight = font.lineHeight * CGFloat(numberOfLines)
         
-        var labelTexts = labelText.splitToLines(withFont: font, maximumWidth: maxWidth)
-        labelTexts.removeSubrange(numberOfLines ..< labelTexts.count)
-        
-        guard let lastLineText = labelTexts.last else {
+        guard var attributedOriginalText = attributedOriginalText else {
             return
         }
         
-        // 若有使用 attributedEllipsis 則優先使用 attributedEllipsis 的 font 去算出 ellipsisWidth
-        let ellipsisFont = (attributedEllipsis?.attributes(at: 0, effectiveRange: nil)[.font] as? UIFont) ?? ellipsisFont ?? font
-        let ellipsisWidth = ellipsis.size(withFont: ellipsisFont).width
+        let attributedEllipsisText = attributedEllipsisText ?? NSAttributedString(string: "")
         
-        let truncatedIndex = lastLineText.truncatedIndex(withFont: font, maximumWidth: maxWidth - Float(ellipsisWidth))
-        let truncatedLastLineText = lastLineText.subString(to: truncatedIndex)
+        var finalAttributedText = NSMutableAttributedString()
+        finalAttributedText.append(attributedOriginalText)
+        finalAttributedText.append(attributedEllipsisText)
         
-        labelTexts.removeLast()
-        
-        let beginText = labelTexts.joined(separator: "\n")
-        
-        let attributedString = NSMutableAttributedString(string: beginText,
-                                                         attributes: [
-                                                            .font: font,
-                                                            .foregroundColor: textColor ?? .systemBlue
-                                                         ])
-        
-        let truncatedLastLineAttributedString = NSMutableAttributedString(string: truncatedLastLineText,
-                                                                          attributes: [
-                                                                            .font: font,
-                                                                            .foregroundColor: textColor ?? .systemBlue
-                                                                          ])
-        
-        attributedString.append(NSAttributedString(string: "\n"))
-        attributedString.append(truncatedLastLineAttributedString)
-        
+        while finalAttributedText.isFitSize(.init(width: maxWidth, height: maxHeight), font: font) == false {
+            attributedOriginalText = attributedOriginalText.attributedSubstring(from: .init(location: 0, length: attributedOriginalText.string.count - 1))
+            
+            finalAttributedText = NSMutableAttributedString()
+            finalAttributedText.append(attributedOriginalText)
+            finalAttributedText.append(attributedEllipsisText)
+        }
+        self.attributedText = finalAttributedText
+    }
+}
+
+extension EllipsisLabel {
+    private var attributedOriginalText: NSAttributedString? {
+        guard let originalText = originalText else {
+            return nil
+        }
+        guard let font = font else {
+            return nil
+        }
+        guard let textColor = textColor else {
+            return nil
+        }
+        return NSAttributedString(string: originalText, attributes: [.font: font, .foregroundColor: textColor])
+    }
+    
+    private var attributedEllipsisText: NSAttributedString? {
         if let attributedEllipsis = attributedEllipsis {
-            attributedString.append(attributedEllipsis)
+            return attributedEllipsis
         }
-        else {
-            let ellipsisAttributedString = NSMutableAttributedString(string: ellipsis,
+        else if let ellipsis = ellipsis {
+            let ellipsisFont = ellipsisFont ?? font ?? UIFont()
+            let ellipsisAttributedString = NSAttributedString(string: ellipsis,
                                                                      attributes: [
                                                                         .font: ellipsisFont,
                                                                         .foregroundColor: ellipsisColor ?? textColor ?? .systemBlue
                                                                      ])
-            attributedString.append(ellipsisAttributedString)
+            return ellipsisAttributedString
         }
-        
-        self.attributedText = attributedString
+        else {
+            return nil
+        }
     }
 }

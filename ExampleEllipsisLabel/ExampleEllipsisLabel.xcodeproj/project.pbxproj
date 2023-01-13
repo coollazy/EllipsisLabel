@@ -14,6 +14,9 @@
 		CE8D4309297127E5002DBF02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8D4307297127E5002DBF02 /* Main.storyboard */; };
 		CE8D430B297127E6002DBF02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE8D430A297127E6002DBF02 /* Assets.xcassets */; };
 		CE8D430E297127E6002DBF02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8D430C297127E6002DBF02 /* LaunchScreen.storyboard */; };
+		CE8D4316297153CD002DBF02 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D4315297153CD002DBF02 /* TableViewController.swift */; };
+		CE8D431929715488002DBF02 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D431729715488002DBF02 /* TableViewCell.swift */; };
+		CE8D431A29715488002DBF02 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8D431829715488002DBF02 /* TableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		CE8D430A297127E6002DBF02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE8D430D297127E6002DBF02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE8D430F297127E6002DBF02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE8D4315297153CD002DBF02 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		CE8D431729715488002DBF02 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		CE8D431829715488002DBF02 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		D6439B556895BFD00ED8B9B5 /* Pods-ExampleEllipsisLabel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleEllipsisLabel.release.xcconfig"; path = "Target Support Files/Pods-ExampleEllipsisLabel/Pods-ExampleEllipsisLabel.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +84,9 @@
 				CE8D430A297127E6002DBF02 /* Assets.xcassets */,
 				CE8D430C297127E6002DBF02 /* LaunchScreen.storyboard */,
 				CE8D430F297127E6002DBF02 /* Info.plist */,
+				CE8D4315297153CD002DBF02 /* TableViewController.swift */,
+				CE8D431729715488002DBF02 /* TableViewCell.swift */,
+				CE8D431829715488002DBF02 /* TableViewCell.xib */,
 			);
 			path = ExampleEllipsisLabel;
 			sourceTree = "<group>";
@@ -88,7 +97,6 @@
 				1A8C1D10D53FF386BC94D044 /* Pods-ExampleEllipsisLabel.debug.xcconfig */,
 				D6439B556895BFD00ED8B9B5 /* Pods-ExampleEllipsisLabel.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -153,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE8D430E297127E6002DBF02 /* LaunchScreen.storyboard in Resources */,
+				CE8D431A29715488002DBF02 /* TableViewCell.xib in Resources */,
 				CE8D430B297127E6002DBF02 /* Assets.xcassets in Resources */,
 				CE8D4309297127E5002DBF02 /* Main.storyboard in Resources */,
 			);
@@ -207,9 +216,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8D431929715488002DBF02 /* TableViewCell.swift in Sources */,
 				CE8D4306297127E5002DBF02 /* ViewController.swift in Sources */,
 				CE8D4302297127E5002DBF02 /* AppDelegate.swift in Sources */,
 				CE8D4304297127E5002DBF02 /* SceneDelegate.swift in Sources */,
+				CE8D4316297153CD002DBF02 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
