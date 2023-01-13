@@ -7,8 +7,11 @@ public class EllipsisLabel: UILabel {
     public var ellipsisColor: UIColor?
     public var ellipsisFont: UIFont?
     
+    private var originalText: String?
+    
     public override var text: String? {
         didSet {
+            originalText = text
             layoutEllipsis()
         }
     }
@@ -36,7 +39,7 @@ public class EllipsisLabel: UILabel {
         guard numberOfLines > 1 else {
             return false
         }
-        guard let text = text else {
+        guard let text = originalText else {
             return false
         }
         guard let font = font else {
@@ -57,7 +60,7 @@ public class EllipsisLabel: UILabel {
     }
     
     private func setEllipsis(_ ellipsis: String, maximumWidth: Float? = nil) {
-        guard let labelText = text else {
+        guard let labelText = originalText else {
             print("[ERROR] Set ellipsis without text")
             return
         }
