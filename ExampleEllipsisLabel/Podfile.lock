@@ -1,0 +1,16 @@
+PODS:
+  - EllipsisLabel (1.0.0)
+
+DEPENDENCIES:
+  - EllipsisLabel (from `../`)
+
+EXTERNAL SOURCES:
+  EllipsisLabel:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  EllipsisLabel: 758e0fb7a5bafa2a6ac83ead4714671ba93e5df5
+
+PODFILE CHECKSUM: 1d222e5def436b015b9a6c0fdc9a8feff84eb1b1
+
+COCOAPODS: 1.11.3
