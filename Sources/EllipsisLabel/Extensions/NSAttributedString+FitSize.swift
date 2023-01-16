@@ -9,6 +9,6 @@ extension NSAttributedString {
         let currentSize = self.boundingRect(with: CGSize(width: fitSize.width, height: CGFloat.greatestFiniteMagnitude),
                                     options: .usesLineFragmentOrigin,
                                     context: nil)
-        return currentSize.height < fitSize.height
+        return currentSize.height <= fitSize.height
     }
 }

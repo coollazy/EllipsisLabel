@@ -39,7 +39,6 @@ public class EllipsisLabel: UILabel {
         
         let maxWidth = bounds.width
         let maxHeight = font.lineHeight * CGFloat(numberOfLines)
-        
         return text.isFitSize(.init(width: maxWidth, height: maxHeight), font: font) == false
     }
     
@@ -55,17 +54,21 @@ public class EllipsisLabel: UILabel {
         
         let maxWidth = bounds.width
         let maxHeight = font.lineHeight * CGFloat(numberOfLines)
+        let fitSize: CGSize = .init(width: maxWidth, height: maxHeight)
         
         guard let text = attributedOriginalText else {
             return
         }
         let ellipsis = attributedEllipsisText ?? NSAttributedString(string: "")
+
+        var truncatedText = text.truncated(fitSize, ellipsis: ellipsis)
+        var finalText = truncatedText + ellipsis
         
-        let truncatedText = text.truncated(.init(width: maxWidth, height: maxHeight), ellipsis: ellipsis)
-        let finalText = NSMutableAttributedString()
-        finalText.append(truncatedText)
-        finalText.append(ellipsis)
-        
+        while finalText.isFitSize(fitSize) == false {
+            truncatedText = truncatedText.subString(length: truncatedText.length - 1)
+            finalText = truncatedText + ellipsis
+        }
+
         super.attributedText = finalText
     }
 }
@@ -91,10 +94,10 @@ extension EllipsisLabel {
         else if let ellipsis = ellipsis {
             let ellipsisFont = ellipsisFont ?? font ?? UIFont()
             let ellipsisAttributedString = NSAttributedString(string: ellipsis,
-                                                                     attributes: [
-                                                                        .font: ellipsisFont,
-                                                                        .foregroundColor: ellipsisColor ?? textColor ?? .systemBlue
-                                                                     ])
+                                                              attributes: [
+                                                                .font: ellipsisFont,
+                                                                .foregroundColor: ellipsisColor ?? textColor ?? .systemBlue
+                                                              ])
             return ellipsisAttributedString
         }
         else {

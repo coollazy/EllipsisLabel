@@ -6,6 +6,6 @@ extension String {
                                     options: .usesLineFragmentOrigin,
                                     attributes: [.font: font,],
                                     context: nil)
-        return currentSize.height < fitSize.height
+        return currentSize.height <= fitSize.height
     }
 }
