@@ -93,7 +93,7 @@ extension EllipsisLabel {
             return attributedEllipsis
         }
         else if let ellipsis = ellipsis {
-            let ellipsisFont = ellipsisFont ?? font ?? UIFont()
+            let ellipsisFont = self.ellipsisFont ?? font ?? UIFont()
             let ellipsisAttributedString = NSAttributedString(string: ellipsis,
                                                               attributes: [
                                                                 .font: ellipsisFont,
