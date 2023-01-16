@@ -37,9 +37,10 @@ public class EllipsisLabel: UILabel {
             return false
         }
         
-        let maxWidth = bounds.width
-        let maxHeight = font.lineHeight * CGFloat(numberOfLines)
-        return text.isFitSize(.init(width: maxWidth, height: maxHeight), font: font) == false
+        let fitSize = CGSize(width: bounds.width,
+                             height: font.lineHeight * CGFloat(numberOfLines))
+        
+        return text.isFitSize(fitSize, font: font) == false
     }
     
     private func drawEllipsis() {
@@ -52,18 +53,18 @@ public class EllipsisLabel: UILabel {
             return
         }
         
-        let maxWidth = bounds.width
-        let maxHeight = font.lineHeight * CGFloat(numberOfLines)
-        let fitSize: CGSize = .init(width: maxWidth, height: maxHeight)
-        
         guard let text = attributedOriginalText else {
             return
         }
         let ellipsis = attributedEllipsisText ?? NSAttributedString(string: "")
+        
+        let fitSize = CGSize(width: bounds.width,
+                             height: font.lineHeight * CGFloat(numberOfLines))
 
         var truncatedText = text.truncated(fitSize, ellipsis: ellipsis)
         var finalText = truncatedText + ellipsis
         
+        // 使用 Attributed String 需要修正最後的誤差
         while finalText.isFitSize(fitSize) == false {
             truncatedText = truncatedText.subString(length: truncatedText.length - 1)
             finalText = truncatedText + ellipsis

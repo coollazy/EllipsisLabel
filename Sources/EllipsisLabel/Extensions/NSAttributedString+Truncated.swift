@@ -1,7 +1,11 @@
 import UIKit
 
 extension NSAttributedString {
-    func truncated(_ fitSize: CGSize, ellipsis: NSAttributedString = NSAttributedString(string: ""), original: NSAttributedString? = nil, cutLength: Int? = nil) -> NSAttributedString {
+    func truncated(_ fitSize: CGSize,
+                   ellipsis: NSAttributedString = NSAttributedString(string: ""),
+                   original: NSAttributedString? = nil,
+                   cutLength: Int? = nil) -> NSAttributedString {
+        
         let original: NSAttributedString = original ?? self
         var cutLength = (cutLength ?? original.length)
         
@@ -27,7 +31,6 @@ extension NSAttributedString {
         else {
             cutLength = cutLength / 2
         }
-        
         
         let subString = original.subString(length: length - cutLength)
         

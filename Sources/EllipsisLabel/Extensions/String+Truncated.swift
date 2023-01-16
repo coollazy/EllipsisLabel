@@ -1,7 +1,12 @@
 import UIKit
 
 extension String {
-     func truncated(_ fitSize: CGSize, font: UIFont, ellipsis: String = "", original: String? = nil, cutLength: Int? = nil) -> String {
+     func truncated(_ fitSize: CGSize,
+                    font: UIFont,
+                    ellipsis: String = "",
+                    original: String? = nil,
+                    cutLength: Int? = nil) -> String {
+         
         let original: String = original ?? self
         var cutLength = (cutLength ?? original.count)
         guard original.isFitSize(fitSize, font: font) == false else {

@@ -7,8 +7,8 @@ extension NSAttributedString {
     
     func isFitSize(_ fitSize: CGSize) -> Bool {
         let currentSize = self.boundingRect(with: CGSize(width: fitSize.width, height: CGFloat.greatestFiniteMagnitude),
-                                    options: .usesLineFragmentOrigin,
-                                    context: nil)
+                                            options: .usesLineFragmentOrigin,
+                                            context: nil)
         return currentSize.height <= fitSize.height
     }
 }
