@@ -27,7 +27,7 @@ public class EllipsisLabel: UILabel {
     }
     
     private func isNeedTruncate() -> Bool {
-        guard numberOfLines > 1 else {
+        guard numberOfLines > 0 else {
             return false
         }
         guard let text = originalText else {
@@ -56,24 +56,17 @@ public class EllipsisLabel: UILabel {
         let maxWidth = bounds.width
         let maxHeight = font.lineHeight * CGFloat(numberOfLines)
         
-        guard var attributedOriginalText = attributedOriginalText else {
+        guard let text = attributedOriginalText else {
             return
         }
+        let ellipsis = attributedEllipsisText ?? NSAttributedString(string: "")
         
-        let attributedEllipsisText = attributedEllipsisText ?? NSAttributedString(string: "")
+        let truncatedText = text.truncated(.init(width: maxWidth, height: maxHeight), ellipsis: ellipsis)
+        let finalText = NSMutableAttributedString()
+        finalText.append(truncatedText)
+        finalText.append(ellipsis)
         
-        var finalAttributedText = NSMutableAttributedString()
-        finalAttributedText.append(attributedOriginalText)
-        finalAttributedText.append(attributedEllipsisText)
-        
-        while finalAttributedText.isFitSize(.init(width: maxWidth, height: maxHeight), font: font) == false {
-            attributedOriginalText = attributedOriginalText.attributedSubstring(from: .init(location: 0, length: attributedOriginalText.string.count - 1))
-            
-            finalAttributedText = NSMutableAttributedString()
-            finalAttributedText.append(attributedOriginalText)
-            finalAttributedText.append(attributedEllipsisText)
-        }
-        self.attributedText = finalAttributedText
+        super.attributedText = finalText
     }
 }
 

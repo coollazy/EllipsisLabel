@@ -47,6 +47,7 @@ class TableViewController: UIViewController {
         
         tableView.register(.init(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
         tableView.dataSource = self
+        tableView.delegate = self
     }
 }
 
@@ -63,5 +64,11 @@ extension TableViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         cell.label.text = items[indexPath.row]
         return cell
+    }
+}
+
+extension TableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        130
     }
 }

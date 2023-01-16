@@ -15,7 +15,7 @@ class TableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        label.lineBreakMode = .byClipping
+        label.lineBreakMode = .byTruncatingTail
         label.font = .systemFont(ofSize: 17)
         label.textColor = .darkGray
         label.numberOfLines = 5
