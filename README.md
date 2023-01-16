@@ -7,7 +7,7 @@ Label with custom ellipsis when text is too long.
 ### CocoaPods
 
 ```
-pod 'EllipsisLabel', '~> 1.0.0'
+pod 'EllipsisLabel', '~> 1.0.1'
 ```
 
 ### SPM
@@ -15,7 +15,7 @@ pod 'EllipsisLabel', '~> 1.0.0'
 - Package.swift 的 dependencies 增加
 
 ```
-.package(name: "EllipsisLabel", url: "https://github.com/coollazy/EllipsisLabel", .upToNextMajor(from: "1.0.0")),
+.package(name: "EllipsisLabel", url: "https://github.com/coollazy/EllipsisLabel", .upToNextMajor(from: "1.0.1")),
 ```
 
 - target 的 dependencies 增加
